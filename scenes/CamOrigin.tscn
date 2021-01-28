@@ -2,10 +2,9 @@
 
 [ext_resource path="res://scripts/CamOrigin.gd" type="Script" id=1]
 
-
 [node name="CamOrigin" type="Spatial"]
 script = ExtResource( 1 )
 interpolation_delta = 1.0
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 3.96593, 5.74118 )
+transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 5.77766, 12.5027 )

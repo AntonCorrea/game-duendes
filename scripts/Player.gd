@@ -1,6 +1,7 @@
 extends KinematicBody
 
-signal can_use
+signal can_pick
+signal can_throw
 
 export var MOVE_SPEED = 10
 export var ROT_SPEED = 2
@@ -11,17 +12,21 @@ const MAX_FALL_SPEED = 30
 var mov_vec = Vector3()
 var y_velo =0
 
-var object_to_use:RigidBody
+var object_to_pick:RigidBody
+var object_picked:RigidBody
+var can_throw = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _process(delta):
-	mov_vec = Vector3() * 0
+	mov_vec = Vector3.ZERO
 	if Input.is_action_pressed("move_forwards"):
 		mov_vec.z -= 1
 	if Input.is_action_pressed("move_backwards"):
@@ -31,10 +36,15 @@ func _process(delta):
 	if Input.is_action_pressed("turn_left"):
 		rotate_y(1 * delta * ROT_SPEED)
 	if Input.is_action_just_pressed("use"):
-		if(object_to_use):
-			print("USE" + str(object_to_use))
-
-
+		if(object_to_pick):
+			if(can_throw):
+				object_picked.drop()
+			object_picked = object_to_pick
+			object_to_pick.pick_up($"SpatialObjectsContainer")
+			
+		elif can_throw:
+			object_picked.throw()
+		
 func _physics_process(_delta):
 	_movement_and_jump()
 
@@ -60,15 +70,15 @@ func _movement_and_jump():
 	if y_velo < -MAX_FALL_SPEED:
 		y_velo = -MAX_FALL_SPEED
 
-
 func _on_UseArea_area_entered(area):
 	if area.is_in_group("use"):
-		object_to_use = area.get_parent()
-		emit_signal("can_use",true)
+		object_to_pick = area.get_parent()
+		emit_signal("can_pick",true)
 	pass # Replace with function body.
+	
 func _on_UseArea_area_exited(area):
 	if area.is_in_group("use"):
-		if area.get_parent() == object_to_use:
-			object_to_use = null	
-			emit_signal("can_use",false)
+		if area.get_parent() == object_to_pick:
+			object_to_pick = null	
+			emit_signal("can_pick",false)
 	pass # Replace with function body.

@@ -2,7 +2,6 @@
 
 [ext_resource path="res://scripts/UI.gd" type="Script" id=1]
 
-
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,4 +9,31 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 349.674, 253.62 )
+scale = Vector2( 2, 2 )
+
+[node name="PressF" type="Label" parent="Node2D"]
+margin_right = 48.0
+margin_bottom = 14.0
+text = "PRESS F"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToPick" type="Label" parent="Node2D/PressF"]
+margin_left = -10.3826
+margin_top = 14.0
+margin_right = 62.6174
+margin_bottom = 28.0
+text = "TO PICK UP"
+
+[node name="ToThrow" type="Label" parent="Node2D/PressF"]
+margin_left = -10.3826
+margin_top = 14.0
+margin_right = 62.6174
+margin_bottom = 28.0
+text = "TO THROW"
 [connection signal="gui_input" from="." to="." method="_on_UI_gui_input"]
+[connection signal="resized" from="." to="." method="_on_UI_resized"]
