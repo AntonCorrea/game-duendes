@@ -1,38 +1,41 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 
-[sub_resource type="CapsuleShape" id=4]
+[sub_resource type="CapsuleShape" id=1]
 height = 2.0
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="CubeMesh" id=2]
 size = Vector3( 2, 4, 2 )
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="CubeMesh" id=3]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.964706, 0, 0, 1 )
 
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 2, 2, 2 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.75, 1, 1 )
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 
 [node name="CollisionShapePlayer" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1 )
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
 
 [node name="UseArea" type="Area" parent="."]
 
@@ -42,5 +45,12 @@ shape = SubResource( 5 )
 
 [node name="SpatialObjectsContainer" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0 )
+
+[node name="GrabArea" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="GrabArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1 )
+shape = SubResource( 6 )
 [connection signal="area_entered" from="UseArea" to="." method="_on_UseArea_area_entered"]
 [connection signal="area_exited" from="UseArea" to="." method="_on_UseArea_area_exited"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_GrabArea_area_entered"]
