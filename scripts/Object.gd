@@ -44,7 +44,8 @@ func _process(_delta):
 
 func pick_up(from:Spatial):
 	container = from
-	self.mode = MODE_KINEMATIC
+	get_node("CollisionShape").disabled = true
+	#self.mode = MODE_KINEMATIC
 # warning-ignore:return_value_discarded
 	tween_pick_object.interpolate_property(self,"translation",self.global_transform.origin,container.global_transform.origin,
 	.25,
@@ -57,20 +58,23 @@ func pick_up(from:Spatial):
 func set_follow():
 	follow_container = true
 	container.get_parent().can_throw = true
-	container.get_parent().emit_signal("can_throw",true)
+	container.get_parent().emit_signal("show_ui_can_throw",true)
 
 func throw():
 	follow_container = false
 	container.get_parent().can_throw = false
-	container.get_parent().emit_signal("can_throw",false)
-	self.mode = MODE_RIGID
+	container.get_parent().emit_signal("show_ui_can_throw",false)
+	#self.mode = MODE_RIGID
+	get_node("CollisionShape").disabled = false
 	apply_impulse(Vector3(0, 0, 0), Vector3(0, 10, -10).rotated(Vector3(0, 1, 0), rotation.y))
+	
 
 func drop():
 	follow_container = false
 	container.get_parent().can_throw = false
-	self.mode = MODE_RIGID
-	apply_impulse(Vector3(0, 0, 0), Vector3(15, 0, 0).rotated(Vector3(0, 1, 0), rotation.y))
+	#self.mode = MODE_RIGID
+	get_node("CollisionShape").disabled = false
+	apply_impulse(Vector3(0, 0, 0), Vector3(0, 10, 10).rotated(Vector3(0, 1, 0), rotation.y))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Duendezaso.gltf-197bef5c08702dc28e72032dd2f1830b.scn"
+path="res://.import/Escenario_placeholder_2.0 (1).glb-c8d16f5f7b2198347b6cf3dc722e481e.scn"
 
 [deps]
 
-source_file="res://resources/duendazo/Duendezaso.gltf"
-dest_files=[ "res://.import/Duendezaso.gltf-197bef5c08702dc28e72032dd2f1830b.scn" ]
+source_file="res://resources/escenario_placeholder/col/Escenario_placeholder_2.0 (1).glb"
+dest_files=[ "res://.import/Escenario_placeholder_2.0 (1).glb-c8d16f5f7b2198347b6cf3dc722e481e.scn" ]
 
 [params]
 

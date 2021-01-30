@@ -11,8 +11,9 @@ var ui
 func _ready():
 	player = get_parent().get_node("Player")
 	ui = get_parent().get_node("UI")
-	player.connect("can_pick",ui,"show_can_pick")
-	player.connect("can_throw",ui,"show_can_throw")
+	player.connect("show_ui_can_pick",ui,"show_can_pick")
+	player.connect("show_ui_can_throw",ui,"show_can_throw")
+	player.connect("show_ui_can_climb",ui,"show_can_climb")
 	pass # Replace with function body.
 
 

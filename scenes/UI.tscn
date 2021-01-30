@@ -14,26 +14,54 @@ __meta__ = {
 position = Vector2( 349.674, 253.62 )
 scale = Vector2( 2, 2 )
 
-[node name="PressF" type="Label" parent="Node2D"]
-margin_right = 48.0
-margin_bottom = 14.0
-text = "PRESS F"
+[node name="Press" type="Control" parent="Node2D"]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ToPick" type="Label" parent="Node2D/PressF"]
+[node name="PressF" type="Label" parent="Node2D/Press"]
+anchor_left = 0.437093
+anchor_top = 0.528375
+anchor_right = 0.497093
+anchor_bottom = 0.557542
+margin_left = -41.4837
+margin_top = -28.135
+margin_right = 6.5163
+margin_bottom = -14.135
+text = "PRESS F"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ToPick" type="Label" parent="Node2D/Press/PressF"]
 margin_left = -10.3826
 margin_top = 14.0
 margin_right = 62.6174
 margin_bottom = 28.0
 text = "TO PICK UP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ToThrow" type="Label" parent="Node2D/PressF"]
+[node name="ToThrow" type="Label" parent="Node2D/Press/PressF"]
 margin_left = -10.3826
 margin_top = 14.0
 margin_right = 62.6174
 margin_bottom = 28.0
 text = "TO THROW"
+
+[node name="PressClimb" type="Label" parent="Node2D/Press"]
+margin_left = -60.0
+margin_top = -7.0
+margin_right = 61.0
+margin_bottom = 24.0
+text = "PRESS W TO CLIMB
+PRESS S TO DROP"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="gui_input" from="." to="." method="_on_UI_gui_input"]
 [connection signal="resized" from="." to="." method="_on_UI_resized"]

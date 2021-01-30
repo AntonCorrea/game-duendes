@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/duende3001.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 2.0
@@ -15,10 +16,9 @@ size = Vector3( 1, 1, 1 )
 albedo_color = Color( 0.964706, 0, 0, 1 )
 
 [sub_resource type="BoxShape" id=5]
-extents = Vector3( 2, 2, 2 )
 
 [sub_resource type="BoxShape" id=6]
-extents = Vector3( 0.75, 1, 1 )
+extents = Vector3( 0.75, 0.1, 0.7 )
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -27,8 +27,15 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0 )
 shape = SubResource( 1 )
 
+[node name="duende3001" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+
+[node name="SpatialObjectsContainer" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26295, -2.16682 )
+
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+visible = false
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -40,16 +47,13 @@ material/0 = SubResource( 4 )
 [node name="UseArea" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="UseArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2 )
 shape = SubResource( 5 )
-
-[node name="SpatialObjectsContainer" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0 )
 
 [node name="GrabArea" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="GrabArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25372, -1.25461 )
 shape = SubResource( 6 )
 [connection signal="area_entered" from="UseArea" to="." method="_on_UseArea_area_entered"]
 [connection signal="area_exited" from="UseArea" to="." method="_on_UseArea_area_exited"]

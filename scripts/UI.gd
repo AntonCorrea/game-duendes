@@ -7,10 +7,12 @@ var pivot: Vector2
 var label_press
 
 func _ready():
-	label_press = get_node("Node2D/PressF")
-	label_press.hide()
-	label_press.get_node("ToPick").hide()
-	label_press.get_node("ToThrow").hide()
+	label_press = get_node("Node2D/Press")
+	label_press.get_node("PressF").hide()
+	label_press.get_node("PressF/ToPick").hide()
+	label_press.get_node("PressF/ToThrow").hide()
+	label_press.get_node("PressClimb").hide()
+	
 	
 func _process(_delta):
 #	if(manager.paused == true):
@@ -59,21 +61,34 @@ func _on_UI_gui_input(event):
 
 func show_can_pick(value):
 	if value:
-		if(label_press.get_node("ToThrow")).is_visible():
-			label_press.get_node("ToThrow").hide()
+		label_press.get_node("PressF").show()
+		if(label_press.get_node("PressF/ToThrow")).is_visible():
+			label_press.get_node("PressF/ToThrow").hide()
 		label_press.show()
-		label_press.get_node("ToPick").show()
+		label_press.get_node("PressF/ToPick").show()
 	else:
 		label_press.hide()
-		label_press.get_node("ToPick").hide()
+		label_press.get_node("PressF").hide()
+		label_press.get_node("PressF/ToPick").hide()
 
 func show_can_throw(value):
 	if value:
 		label_press.show()
-		label_press.get_node("ToThrow").show()
+		label_press.get_node("PressF").show()
+		label_press.get_node("PressF/ToThrow").show()
 	else:
 		label_press.hide()
-		label_press.get_node("ToThrow").hide()
+		label_press.get_node("PressF").hide()
+		label_press.get_node("PressF/ToThrow").hide()
+		
+func show_can_climb(value):
+	if value:
+		label_press.show()
+		label_press.get_node("PressClimb").show()
+	else:
+		label_press.hide()
+		label_press.get_node("PressClimb").hide()
+	pass
 
 func _on_UI_resized():
 	pass # Replace with function body.

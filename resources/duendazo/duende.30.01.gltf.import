@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Escenario_placeholder_2.0 (1).glb-0ee6aa60eefba3d42b938abb90b36dbb.scn"
+path="res://.import/duende.30.01.gltf-5324f07926415e88669434bdedcb4e0b.scn"
 
 [deps]
 
-source_file="res://resources/col/Escenario_placeholder_2.0 (1).glb"
-dest_files=[ "res://.import/Escenario_placeholder_2.0 (1).glb-0ee6aa60eefba3d42b938abb90b36dbb.scn" ]
+source_file="res://resources/duendazo/duende.30.01.gltf"
+dest_files=[ "res://.import/duende.30.01.gltf-5324f07926415e88669434bdedcb4e0b.scn" ]
 
 [params]
 
@@ -29,8 +29,8 @@ external_files/store_in_subdir=false
 animation/import=true
 animation/fps=15
 animation/filter_script=""
-animation/storage=false
-animation/keep_custom_tracks=false
+animation/storage=1
+animation/keep_custom_tracks=true
 animation/optimizer/enabled=true
 animation/optimizer/max_linear_error=0.05
 animation/optimizer/max_angular_error=0.01
