@@ -16,6 +16,8 @@ signal animator_hang
 signal animator_climb
 signal animator_land
 
+signal activate_wall_cam
+
 export var MOVE_SPEED = 10
 export var ROT_SPEED = 2
 const JUMP_FORCE = 30
@@ -37,6 +39,8 @@ var is_grabbing_ledge = false
 
 var tween_climb_edge:Tween
 var twee_climb_in_progress = false
+
+var is_tank_controls = false
 
 func _ready():
 	tween_climb_edge = Tween.new()
@@ -65,16 +69,28 @@ func _process(delta):
 	mov_vec = Vector3.ZERO
 	if !is_grabbing_ledge:
 		if Input.is_action_pressed("move_forwards"):
-			mov_vec.z -= 1
+			if is_tank_controls:
+				mov_vec.x += 1
+			else:
+				mov_vec.z -= 1
 			emit_signal("animator_is_running",delta)
 		if Input.is_action_pressed("move_backwards"):
-			mov_vec.z += 1
+			if is_tank_controls:
+				mov_vec.x -= 1
+			else:
+				mov_vec.z += 1
 			emit_signal("animator_backwards",delta)
 			#emit_signal("animator_is_running",delta)
 		if Input.is_action_pressed("turn_right"):
-			rotate_y(-1 * delta * ROT_SPEED)
+			if is_tank_controls:
+				mov_vec.z += 1
+			else:
+				rotate_y(-1 * delta * ROT_SPEED)
 		if Input.is_action_pressed("turn_left"):
-			rotate_y(1 * delta * ROT_SPEED)
+			if is_tank_controls:
+				mov_vec.z -= 1
+			else:
+				rotate_y(1 * delta * ROT_SPEED)
 		if Input.is_action_just_pressed("use"):
 			if(object_to_pick):
 				emit_signal("animator_carry",true)
@@ -87,7 +103,6 @@ func _process(delta):
 				#yield(get_tree().create_timer(.5),"timeout")
 				emit_signal("animator_carry",false)
 				object_picked.throw()
-
 	else:
 		if Input.is_action_just_pressed("move_forwards"):
 			_edge_tween_climb()
@@ -177,3 +192,18 @@ func _wall_jump():
 	rotate_y(PI)
 	y_velo = JUMP_FORCE
 	z_velo = Z_MAX_FORCE
+
+func _on_PlayerArea_area_entered(area):
+	if area.is_in_group("cam_wall"):
+		emit_signal("activate_wall_cam",area)
+		#yield(get_tree().create_timer(.5),"timeout")
+		is_tank_controls = true
+		#rotate_y(PI/2)
+		
+	pass # Replace with function body.
+
+func _on_PlayerArea_area_exited(area):
+	if area.is_in_group("cam_wall"):
+		emit_signal("activate_wall_cam",null)
+		is_tank_controls = false
+	pass # Replace with function body.

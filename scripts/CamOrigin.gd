@@ -19,6 +19,9 @@ var cam_init_pos : Vector3
 func _ready():
 	cam_init_pos = $Camera.transform.origin
 	target = player
+	
+	player.connect("activate_wall_cam",self,"wall_cam")
+	
 	pass
 
 func _physics_process(delta):
@@ -30,7 +33,6 @@ func _on_Area_body_entered(body):
 		set_cam_mode("FPS")
 		pass
 	pass # Replace with function body.
-
 
 func _on_Area_body_exited(body):
 	if body.is_in_group("scenario"):
@@ -44,3 +46,12 @@ func set_cam_mode(mode:String):
 		$Camera.transform.origin = Vector3(0,6,10)
 		interpolation_delta = 2.5
 	pass
+
+func wall_cam(area):
+	if area==null:
+		target = player
+	else:
+		target = area.get_node("Spatial")
+		player.rotation_degrees = Vector3(0,90,0) + (area.rotation_degrees)
+
+

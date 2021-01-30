@@ -80,7 +80,7 @@ filters = [ "Armature/Skeleton:head", "Armature/Skeleton:hips", "Armature/Skelet
 [sub_resource type="AnimationNodeTimeScale" id=22]
 
 [resource]
-graph_offset = Vector2( 773.885, -175.021 )
+graph_offset = Vector2( 660.497, -182.218 )
 nodes/Animation/node = SubResource( 11 )
 nodes/Animation/position = Vector2( -260, -20 )
 "nodes/Animation 10/node" = SubResource( 27 )

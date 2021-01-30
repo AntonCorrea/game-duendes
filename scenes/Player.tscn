@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/duende3001.tscn" type="PackedScene" id=2]
@@ -20,10 +20,15 @@ albedo_color = Color( 0.964706, 0, 0, 1 )
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.75, 0.1, 0.7 )
 
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 1, 2, 1 )
+
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 
-[node name="CollisionShapePlayer" type="CollisionShape" parent="."]
+[node name="CollisionShapePlayer" type="CollisionShape" parent="." groups=[
+"player",
+]]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0 )
 shape = SubResource( 1 )
 
@@ -55,6 +60,14 @@ shape = SubResource( 5 )
 [node name="CollisionShape" type="CollisionShape" parent="GrabArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25372, -1.25461 )
 shape = SubResource( 6 )
+
+[node name="PlayerArea" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+shape = SubResource( 7 )
 [connection signal="area_entered" from="UseArea" to="." method="_on_UseArea_area_entered"]
 [connection signal="area_exited" from="UseArea" to="." method="_on_UseArea_area_exited"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_GrabArea_area_entered"]
+[connection signal="area_entered" from="PlayerArea" to="." method="_on_PlayerArea_area_entered"]
+[connection signal="area_exited" from="PlayerArea" to="." method="_on_PlayerArea_area_exited"]

@@ -74,5 +74,4 @@ func hang(_value):
 	animation_tree.set("parameters/OneShotHang/active",_value)
 	
 func climb():
-	print("climb")
 	animation_tree.set("parameters/OneShotClimb/active",true)
