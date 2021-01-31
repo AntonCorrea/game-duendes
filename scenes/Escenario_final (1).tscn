@@ -82,3 +82,7 @@ material/0 = ExtResource( 2 )
 
 [node name="Cortina001" parent="." index="24"]
 material/0 = ExtResource( 2 )
+
+[node name="Escenario" parent="." index="25" groups=[
+"scenario",
+]]
