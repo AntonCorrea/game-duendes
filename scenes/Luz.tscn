@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="SpotLight" type="SpotLight"]
+transform = Transform( 1, 0, 0, 0, 0.0677018, 0.997706, 0, -0.997706, 0.0677018, -2.64384, 83.8474, -8.19349 )
+light_energy = 3.62
+light_indirect_energy = 0.0
+light_specular = 0.51
+shadow_enabled = true
+shadow_bias = 0.33
+spot_range = 109.655
+spot_angle = 71.5082

@@ -1,7 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://resources/duendazo/animations/Idle.anim" type="Animation" id=1]
-[ext_resource path="res://resources/duendazo/Toon_Shader.material" type="Material" id=2]
 [ext_resource path="res://scripts/duende3001_animator.gd" type="Script" id=3]
 [ext_resource path="res://resources/duendazo/duende3001_animationtree.tres" type="AnimationNodeBlendTree" id=4]
 [ext_resource path="res://resources/duendazo/animations/Idle_move_head.anim" type="Animation" id=5]
@@ -20,8 +19,7 @@
 [ext_resource path="res://resources/duendazo/animations/Jumping Up.anim" type="Animation" id=18]
 [ext_resource path="res://resources/duendazo/animations/Jumping Up 2.anim" type="Animation" id=19]
 [ext_resource path="res://resources/duendazo/animations/JumpingLand.anim" type="Animation" id=20]
-
-
+[ext_resource path="res://resources/Toon_Shader.material" type="Material" id=21]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Duende"
@@ -32,6 +30,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97751,
 "index_count": 8100,
+"material": ExtResource( 21 ),
 "primitive": 4,
 "skeleton_aabb": [ AABB( -0.609113, 0.54618, -0.417125, 1.22601, 1.06798, 0.891323 ), AABB( -0.502425, 1.26115, -0.417125, 1.03769, 0.411049, 0.876535 ), AABB( -0.462752, 1.40753, -0.392711, 0.93329, 0.53765, 0.783624 ), AABB( -0.906773, 1.40753, -0.404841, 1.76883, 0.894659, 0.772438 ), AABB( -0.303075, 2.19215, -0.275006, 0.587499, 0.243612, 0.688136 ), AABB( -0.603953, 2.19215, -0.451746, 1.21569, 1.78951, 1.05845 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0.126537, 1.58483, -0.373577, 0.735515, 0.688171, 0.468517 ), AABB( 0.151519, 1.58483, -0.373577, 1.17409, 0.683914, 0.468517 ), AABB( 0.517327, 1.77849, -0.364316, 1.15372, 0.452476, 0.391915 ), AABB( 0.684545, 1.92401, -0.313803, 1.01552, 0.247873, 0.361122 ), AABB( 1.3256, 1.95771, -0.337332, 0.475302, 0.214173, 0.38465 ), AABB( 1.59146, 2.00233, -0.337332, 0.249787, 0.16955, 0.2943 ), AABB( 1.80091, 2.05036, -0.216579, 0.0403455, 0.0610948, 0.173547 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -0.906773, 1.58483, -0.373577, 0.788021, 0.683914, 0.468517 ), AABB( -1.31782, 1.58483, -0.373577, 1.18499, 0.683914, 0.468517 ), AABB( -1.63334, 1.77849, -0.364316, 1.1937, 0.452476, 0.391915 ), AABB( -1.69228, 1.92401, -0.364316, 1.0589, 0.306957, 0.411635 ), AABB( -1.81049, 1.95261, -0.337332, 0.492685, 0.219276, 0.38465 ), AABB( -1.83347, 1.95771, -0.337332, 0.385589, 0.214173, 0.38465 ), AABB( -1.83347, 2.05036, -0.216579, 0.0229833, 0.0564618, 0.14346 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -0.246465, 0.304203, -0.367124, 0.863363, 0.840294, 0.653141 ), AABB( 0.0579367, -0.00189322, -0.352933, 0.558961, 0.794638, 0.652795 ), AABB( 0.0579367, -0.0018933, -0.352933, 0.558961, 0.794638, 0.885676 ), AABB( 0.0579367, -0.0018933, -0.276392, 0.549721, 0.592082, 0.809135 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -0.609113, 0.304203, -0.367124, 0.863363, 0.982189, 0.653141 ), AABB( -0.609113, -0.00189321, -0.352933, 0.558961, 0.794638, 0.557125 ), AABB( -0.609113, -0.0018933, -0.317148, 0.558961, 0.794638, 0.849891 ), AABB( -0.599873, -0.0018933, -0.276392, 0.549721, 0.592082, 0.809135 ) ],
 "vertex_count": 1624
@@ -315,7 +314,7 @@ bones/32/bound_children = [  ]
 [node name="Duende" type="MeshInstance" parent="Armature/Skeleton"]
 mesh = SubResource( 1 )
 skin = SubResource( 2 )
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 21 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Carrying = ExtResource( 11 )

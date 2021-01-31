@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/escenario_final1/Escenario_final (1).glb" type="PackedScene" id=1]
+[ext_resource path="res://resources/Paredes_piso_y_demas.material" type="Material" id=2]
+
+[node name="Escenario_final (1)" instance=ExtResource( 1 )]
+
+[node name="Mesa" parent="." index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="Bacha" parent="." index="1"]
+material/0 = ExtResource( 2 )
+
+[node name="Mueble" parent="." index="2"]
+material/0 = ExtResource( 2 )
+
+[node name="Silla" parent="." index="3"]
+material/0 = ExtResource( 2 )
+
+[node name="Estante" parent="." index="4"]
+material/0 = ExtResource( 2 )
+
+[node name="Bacha001" parent="." index="5"]
+material/0 = ExtResource( 2 )
+
+[node name="TV DE 98 pulgadas" parent="." index="6"]
+material/0 = ExtResource( 2 )
+
+[node name="Silla001" parent="." index="7"]
+material/0 = ExtResource( 2 )
+
+[node name="Perchero" parent="." index="8"]
+material/0 = ExtResource( 2 )
+
+[node name="Cortina" parent="." index="9"]
+material/0 = ExtResource( 2 )
+
+[node name="Alacena" parent="." index="10"]
+material/0 = ExtResource( 2 )
+
+[node name="Cocina" parent="." index="11"]
+material/0 = ExtResource( 2 )
+
+[node name="Extractor" parent="." index="12"]
+material/0 = ExtResource( 2 )
+
+[node name="Heladera" parent="." index="13"]
+material/0 = ExtResource( 2 )
+
+[node name="Cube" parent="." index="14"]
+material/0 = ExtResource( 2 )
+
+[node name="Frasco 2" parent="." index="15"]
+material/0 = ExtResource( 2 )
+
+[node name="Libro 2" parent="." index="16"]
+material/0 = ExtResource( 2 )
+
+[node name="Pasadizo" parent="." index="17"]
+material/0 = ExtResource( 2 )
+
+[node name="Estante001" parent="." index="18"]
+material/0 = ExtResource( 2 )
+
+[node name="Cube003" parent="." index="19"]
+material/0 = ExtResource( 2 )
+
+[node name="Door Mueble l" parent="." index="20"]
+material/0 = ExtResource( 2 )
+
+[node name="Door MJueble" parent="." index="21"]
+material/0 = ExtResource( 2 )
+
+[node name="Door Heladera Bottom" parent="." index="22"]
+material/0 = ExtResource( 2 )
+
+[node name="Door Heladera Up" parent="." index="23"]
+material/0 = ExtResource( 2 )
+
+[node name="Cortina001" parent="." index="24"]
+material/0 = ExtResource( 2 )

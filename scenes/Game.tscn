@@ -1,11 +1,27 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Escenario_final.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/CamOrigin.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/Manager.gd" type="Script" id=5]
-[ext_resource path="res://scenes/Object.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Luz.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/objects_objects/ObjectAnillo.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/objects_objects/ObjectBoton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/objects_objects/ObjectCompu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/objects_objects/ObjectControl.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/objects_objects/ObjectCubo.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/objects_objects/ObjectBotnRojo.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/objects_objects/ObjectFoco.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/objects_objects/ObjectFrasco.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/objects_objects/ObjectMedia.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/objects_objects/ObjectMoneda.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/objects_objects/ObjectPelo.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/objects_objects/ObjectPerlas.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/objects_objects/ObjectPica.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/objects_objects/ObjectVaso.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/objects_objects/ObjectLlave.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/objects_objects/ObjectCuchi.tscn" type="PackedScene" id=22]
 
 [node name="Game" type="Spatial"]
 
@@ -14,19 +30,69 @@ script = ExtResource( 5 )
 
 [node name="UI" parent="." instance=ExtResource( 1 )]
 
+[node name="Escenario_final" parent="." instance=ExtResource( 2 )]
+
 [node name="CamOrigin" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 9, 20 )
 player_path = NodePath("../Player")
 
+[node name="Camera" parent="CamOrigin" index="0"]
+far = 200.0
+
 [node name="Player" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1.053e-07, 0, -1, 0, 1, 0, 1, 0, 1.053e-07, 71, 63, -60 )
+transform = Transform( 1.053e-07, 0, -1, 0, 1, 0, 1, 0, 1.053e-07, 35, 3, -1 )
 
-[node name="Object" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2, 0 )
+[node name="Objetos" type="Spatial" parent="."]
 
-[node name="Object2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 2, 0 )
+[node name="Object" parent="Objetos" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 55, 45, 11 )
 
-[node name="Escenario_final" parent="." instance=ExtResource( 2 )]
+[node name="Object2" parent="Objetos" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, -10 )
+
+[node name="Object3" parent="Objetos" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -19, 32, 0 )
+
+[node name="Object4" parent="Objetos" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14, 22, -10 )
+
+[node name="Object5" parent="Objetos" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5041, 14.2759, 76 )
+
+[node name="Object6" parent="Objetos" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 10, 0 )
+
+[node name="Object7" parent="Objetos" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9, 26, -53 )
+
+[node name="Object8" parent="Objetos" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 45, 61, -54 )
+
+[node name="Object9" parent="Objetos" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 47, -52 )
+
+[node name="Object10" parent="Objetos" instance=ExtResource( 21 )]
+transform = Transform( -1.13133e-08, -0.965926, 0.258819, -4.2222e-08, 0.258819, 0.965926, -1, 0, -4.37114e-08, -52, 46, 1 )
+
+[node name="Object11" parent="Objetos" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 120 )
+
+[node name="Object12" parent="Objetos" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 9 )
+
+[node name="Object13" parent="Objetos" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, -2 )
+
+[node name="Object14" parent="Objetos" instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45, 47, -44 )
+
+[node name="Object15" parent="Objetos" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.09, 20, -53.1685 )
+
+[node name="Object16" parent="Objetos" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
+
+[node name="SpotLight" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 0.0677018, 0.997706, 0, -0.997706, 0.0677018, -0.0634873, 75.2435, -5.63575 )
 
 [editable path="CamOrigin"]
