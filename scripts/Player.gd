@@ -41,6 +41,7 @@ var tween_climb_edge:Tween
 var twee_climb_in_progress = false
 
 var is_tank_controls = false
+var tank_controls_dir = -1
 
 func _ready():
 	tween_climb_edge = Tween.new()
@@ -67,29 +68,51 @@ func _ready():
 
 func _process(delta):
 	mov_vec = Vector3.ZERO
-	if !is_grabbing_ledge:
-		if Input.is_action_pressed("move_forwards"):
-			if is_tank_controls:
-				mov_vec.x += 1
-			else:
+	if is_grabbing_ledge:
+		if Input.is_action_just_pressed("pressed_w"):
+			_edge_tween_climb()
+		if Input.is_action_pressed("pressed_s"):
+			emit_signal("animator_hang",false)
+			is_grabbing_ledge = false
+			emit_signal("show_ui_can_climb",false)
+	else:
+		if is_tank_controls:
+			if Input.is_action_pressed("pressed_w"):
+				if tank_controls_dir == -1:
+					mov_vec.x += 1
+				else:
+					mov_vec.x -= 1
+				pass
+			if Input.is_action_pressed("pressed_s"):
+				if tank_controls_dir == -1:
+					mov_vec.x -= 1
+				else:
+					mov_vec.x += 1
+				pass
+			if Input.is_action_pressed("pressed_d"):
 				mov_vec.z -= 1
-			emit_signal("animator_is_running",delta)
-		if Input.is_action_pressed("move_backwards"):
-			if is_tank_controls:
-				mov_vec.x -= 1
-			else:
+				#tank_controls_dir = +1		
+				if tank_controls_dir == -1:
+					rotate_y(PI)
+					tank_controls_dir = 1
+				pass
+			if Input.is_action_pressed("pressed_a"):
+				mov_vec.z -= 1
+				if tank_controls_dir == 1:
+					rotate_y(PI)
+					tank_controls_dir = -1
+				#tank_controls_dir = -1
+				pass
+		else:
+			if Input.is_action_pressed("pressed_w"):
+				mov_vec.z -= 1
+				emit_signal("animator_is_running",delta)
+			if Input.is_action_pressed("pressed_s"):
 				mov_vec.z += 1
-			emit_signal("animator_backwards",delta)
-			#emit_signal("animator_is_running",delta)
-		if Input.is_action_pressed("turn_right"):
-			if is_tank_controls:
-				mov_vec.z += 1
-			else:
+				emit_signal("animator_backwards",delta)
+			if Input.is_action_pressed("pressed_d"):
 				rotate_y(-1 * delta * ROT_SPEED)
-		if Input.is_action_pressed("turn_left"):
-			if is_tank_controls:
-				mov_vec.z -= 1
-			else:
+			if Input.is_action_pressed("pressed_a"):
 				rotate_y(1 * delta * ROT_SPEED)
 		if Input.is_action_just_pressed("use"):
 			if(object_to_pick):
@@ -99,17 +122,9 @@ func _process(delta):
 				object_picked = object_to_pick
 				object_to_pick.pick_up($"SpatialObjectsContainer")
 			elif can_throw:
-				#emit_signal("animator_throw")
-				#yield(get_tree().create_timer(.5),"timeout")
 				emit_signal("animator_carry",false)
 				object_picked.throw()
-	else:
-		if Input.is_action_just_pressed("move_forwards"):
-			_edge_tween_climb()
-		if Input.is_action_pressed("move_backwards"):
-			emit_signal("animator_hang",false)
-			is_grabbing_ledge = false
-			emit_signal("show_ui_can_climb",false)
+
 
 func _physics_process(_delta):
 	
@@ -189,21 +204,28 @@ func _jump():
 	
 func _wall_jump():
 	emit_signal("animator_has_jumped")
-	rotate_y(PI)
+	#rotate_y(PI)
 	y_velo = JUMP_FORCE
 	z_velo = Z_MAX_FORCE
-
+	if !is_tank_controls:
+		rotate_y(PI)
+	else:
+		rotate_y(PI)
+		tank_controls_dir = -tank_controls_dir
 func _on_PlayerArea_area_entered(area):
 	if area.is_in_group("cam_wall"):
-		emit_signal("activate_wall_cam",area)
-		#yield(get_tree().create_timer(.5),"timeout")
-		is_tank_controls = true
-		#rotate_y(PI/2)
-		
+		emit_signal("activate_wall_cam",true,area)
+#		yield(get_tree().create_timer(.5),"timeout")
+#		is_tank_controls = true
+#		rotation_degrees = Vector3(0,90,0)
+#		tank_controls_dir = -1
 	pass # Replace with function body.
 
 func _on_PlayerArea_area_exited(area):
 	if area.is_in_group("cam_wall"):
-		emit_signal("activate_wall_cam",null)
-		is_tank_controls = false
+		emit_signal("activate_wall_cam",false,area)
+#		yield(get_tree().create_timer(.5),"timeout")
+#		is_tank_controls = false
+#		rotation_degrees = Vector3(0,360,0)
 	pass # Replace with function body.
+	

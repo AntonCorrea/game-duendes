@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="BoxShape" id=37]
+extents = Vector3( 4, 8, 6 )
+
+[node name="WallJumpArea" type="Area" groups=[
+"cam_wall",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 37 )
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )

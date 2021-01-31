@@ -13,7 +13,7 @@ var target
 
 var cam_init_pos : Vector3
 
-
+var wall_cam_area_array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,11 +47,14 @@ func set_cam_mode(mode:String):
 		interpolation_delta = 2.5
 	pass
 
-func wall_cam(area):
-	if area==null:
-		target = player
-	else:
+func wall_cam(add,area):
+	if add:
 		target = area.get_node("Spatial")
-		player.rotation_degrees = Vector3(0,90,0) + (area.rotation_degrees)
+		wall_cam_area_array.append(area)
+	else:
+		wall_cam_area_array.erase(area)
+		if wall_cam_area_array.empty():
+			target = player
+		 #+ (area.rotation_degrees)
 
 

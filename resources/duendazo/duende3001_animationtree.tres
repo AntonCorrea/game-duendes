@@ -1,0 +1,143 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=30 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "Hanging Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "Climbing Up Wall"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Slow Jog Backwards"
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "Jumping Up 2"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "JumpingLand"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Idle_move_head"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Running 1"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Goofy Running"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Running"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Running Forward Flip"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Carrying"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Jogging With Box"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "Throw Object"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeBlend2" id=30]
+
+[sub_resource type="AnimationNodeBlend2" id=18]
+
+[sub_resource type="AnimationNodeBlend2" id=19]
+
+[sub_resource type="AnimationNodeBlend2" id=12]
+
+[sub_resource type="AnimationNodeBlend2" id=13]
+
+[sub_resource type="AnimationNodeBlend3" id=14]
+
+[sub_resource type="AnimationNodeOneShot" id=26]
+
+[sub_resource type="AnimationNodeOneShot" id=32]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeOneShot" id=24]
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeOneShot" id=15]
+
+[sub_resource type="AnimationNodeOneShot" id=35]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeOneShot" id=21]
+filter_enabled = true
+filters = [ "Armature/Skeleton:head", "Armature/Skeleton:hips", "Armature/Skeleton:left_arm", "Armature/Skeleton:left_fore_arm", "Armature/Skeleton:left_hand", "Armature/Skeleton:left_hand_index_1", "Armature/Skeleton:left_hand_index_2", "Armature/Skeleton:left_hand_index_3", "Armature/Skeleton:left_shoulder", "Armature/Skeleton:neck", "Armature/Skeleton:right_arm", "Armature/Skeleton:right_fore_arm", "Armature/Skeleton:right_hand", "Armature/Skeleton:right_hand_index_1", "Armature/Skeleton:right_hand_index_2", "Armature/Skeleton:right_hand_index_3", "Armature/Skeleton:right_shoulder", "Armature/Skeleton:spine", "Armature/Skeleton:spine_1", "Armature/Skeleton:spine_2" ]
+
+[sub_resource type="AnimationNodeTimeScale" id=28]
+
+[sub_resource type="AnimationNodeTimeScale" id=36]
+
+[sub_resource type="AnimationNodeTimeScale" id=22]
+
+[resource]
+graph_offset = Vector2( 660.497, -182.218 )
+nodes/Animation/node = SubResource( 11 )
+nodes/Animation/position = Vector2( -260, -20 )
+"nodes/Animation 10/node" = SubResource( 27 )
+"nodes/Animation 10/position" = Vector2( 1780, -160 )
+"nodes/Animation 11/node" = SubResource( 25 )
+"nodes/Animation 11/position" = Vector2( 2020, -280 )
+"nodes/Animation 12/node" = SubResource( 29 )
+"nodes/Animation 12/position" = Vector2( 540, -300 )
+"nodes/Animation 13/node" = SubResource( 33 )
+"nodes/Animation 13/position" = Vector2( 1280, -180 )
+"nodes/Animation 14/node" = SubResource( 34 )
+"nodes/Animation 14/position" = Vector2( 1080, -340 )
+"nodes/Animation 2/node" = SubResource( 6 )
+"nodes/Animation 2/position" = Vector2( -260, 80 )
+"nodes/Animation 3/node" = SubResource( 7 )
+"nodes/Animation 3/position" = Vector2( -260, 220 )
+"nodes/Animation 4/node" = SubResource( 8 )
+"nodes/Animation 4/position" = Vector2( -260, 320 )
+"nodes/Animation 5/node" = SubResource( 9 )
+"nodes/Animation 5/position" = Vector2( -260, 420 )
+"nodes/Animation 6/node" = SubResource( 10 )
+"nodes/Animation 6/position" = Vector2( 1520, -180 )
+"nodes/Animation 7/node" = SubResource( 16 )
+"nodes/Animation 7/position" = Vector2( -260, 540 )
+"nodes/Animation 8/node" = SubResource( 17 )
+"nodes/Animation 8/position" = Vector2( -260, 660 )
+"nodes/Animation 9/node" = SubResource( 20 )
+"nodes/Animation 9/position" = Vector2( 820, -360 )
+nodes/BlendBackwards/node = SubResource( 30 )
+nodes/BlendBackwards/position = Vector2( 600, -20 )
+nodes/BlendCarry/node = SubResource( 18 )
+nodes/BlendCarry/position = Vector2( 380, -20 )
+nodes/BlendCarryIdleRun/node = SubResource( 19 )
+nodes/BlendCarryIdleRun/position = Vector2( -20, 540 )
+nodes/BlendIdle/node = SubResource( 12 )
+nodes/BlendIdle/position = Vector2( -40, -20 )
+nodes/BlendIdleRun/node = SubResource( 13 )
+nodes/BlendIdleRun/position = Vector2( 160, -20 )
+nodes/BlendRun/node = SubResource( 14 )
+nodes/BlendRun/position = Vector2( 0, 220 )
+nodes/OneShotClimb/node = SubResource( 26 )
+nodes/OneShotClimb/position = Vector2( 2020, -20 )
+nodes/OneShotFall/node = SubResource( 32 )
+nodes/OneShotFall/position = Vector2( 1280, 0 )
+nodes/OneShotHang/node = SubResource( 24 )
+nodes/OneShotHang/position = Vector2( 1800, -20 )
+nodes/OneShotJump/node = SubResource( 15 )
+nodes/OneShotJump/position = Vector2( 1520, 0 )
+nodes/OneShotLand/node = SubResource( 35 )
+nodes/OneShotLand/position = Vector2( 1080, 0 )
+nodes/OneShotThrow/node = SubResource( 21 )
+nodes/OneShotThrow/position = Vector2( 860, 0 )
+nodes/TimeScale/node = SubResource( 22 )
+nodes/TimeScale/position = Vector2( 860, -200 )
+"nodes/TimeScale 2/node" = SubResource( 28 )
+"nodes/TimeScale 2/position" = Vector2( 2020, -160 )
+"nodes/TimeScale 3/node" = SubResource( 36 )
+"nodes/TimeScale 3/position" = Vector2( 1080, -200 )
+nodes/output/position = Vector2( 2200, -20 )
+node_connections = [ "output", 0, "OneShotClimb", "BlendBackwards", 0, "BlendCarry", "BlendBackwards", 1, "Animation 12", "OneShotClimb", 0, "OneShotHang", "OneShotClimb", 1, "TimeScale 2", "OneShotJump", 0, "OneShotFall", "OneShotJump", 1, "Animation 6", "BlendRun", 0, "Animation 3", "BlendRun", 1, "Animation 4", "BlendRun", 2, "Animation 5", "BlendIdleRun", 0, "BlendIdle", "BlendIdleRun", 1, "BlendRun", "OneShotFall", 0, "OneShotLand", "OneShotFall", 1, "Animation 13", "TimeScale", 0, "Animation 9", "TimeScale 2", 0, "Animation 11", "BlendCarry", 0, "BlendIdleRun", "BlendCarry", 1, "BlendCarryIdleRun", "BlendIdle", 0, "Animation", "BlendIdle", 1, "Animation 2", "OneShotHang", 0, "OneShotJump", "OneShotHang", 1, "Animation 10", "TimeScale 3", 0, "Animation 14", "OneShotLand", 0, "OneShotThrow", "OneShotLand", 1, "TimeScale 3", "BlendCarryIdleRun", 0, "Animation 7", "BlendCarryIdleRun", 1, "Animation 8", "OneShotThrow", 0, "BlendBackwards", "OneShotThrow", 1, "TimeScale" ]
