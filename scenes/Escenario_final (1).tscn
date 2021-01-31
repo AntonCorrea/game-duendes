@@ -50,6 +50,9 @@ material/0 = ExtResource( 2 )
 [node name="Cube" parent="." index="14"]
 material/0 = ExtResource( 2 )
 
+[node name="ocultar" parent="Cube" index="0"]
+visible = false
+
 [node name="Frasco 2" parent="." index="15"]
 material/0 = ExtResource( 2 )
 
